@@ -1,0 +1,110 @@
+/* problem 页面的Sample Test */
+.sampletest{
+	font-size: large;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/* problem页面的testcase块(包含的table)*/
+.testcase{
+	font-size: medium;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+/* problem页面的table*/
+.testcase_data{
+	border: 2px solid;
+	table-layout: fixed; /* 表格列等宽 */
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+/* problem页面的table 以及数据*/
+.testcase_data td{
+	border: 1px solid;
+	line-height: 20px;
+	text-align: left;
+	padding-left: 5px;
+	vertical-align: top;
+	border-top: 1px solid #dddddd;
+}
+
+/* problem页面的题目标题*/
+.problem_title{
+	font-size: x-large; 
+	text-align: center;
+}
+
+/* problem页面的Input */
+.input{
+	font-weight: bold;
+	font-size: large;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+ 
+/* problem页面的Output */
+.output{
+	font-weight: bold;
+	font-size: large;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/* problem页面的Description */
+.description{
+	font-weight: bold;
+	font-size: large;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/* problem页面的题目描述正文*/
+.problem_text{
+	text-indent: 2em;
+	margin-left: 10px; 
+	margin-right: 10px;
+}
+
+/* problem页面的主体*/
+.problem{
+	font-size: medium;
+	background-color: #DCEAF4;
+	border: 1px solid #CCCCCC;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 20px;
+}
+
+.source{
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 97%;
+	height: 400px;
+	background-color: #DCEAF4
+	font-family: Courier New,Courier,monospace ;
+}
+
+.status{
+	width: 100%;
+}
+
+.status td{
+	padding: 5px;
+	text-align: center;
+}
+
+.status th{
+	padding: 5px;
+	text-align: center;
+}
+
+.status_title{
+	font-weight: bold;
+}

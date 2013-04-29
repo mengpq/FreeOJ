@@ -1,0 +1,201 @@
+$def with(status_flag)
+$:render.header()
+$:render.navigation('status')
+<div>
+	<h1><center>Status List</center></h1>
+	<!-- 提交筛选状态 -->
+	<form class="form-inline" action="/status/" style="margin-bottom:5px">
+		<input type="text" name="USER" class="input-small" placeholder="User">
+		<input type="text" name="PROBLEM" class="input-small" placeholder="Problem">
+		<select name="RESULT" style="width:150px">
+			<option value ="ALL">Result</option>
+			<option value ="AC">Accepted</option>
+			<option value ="WA">Wrong Answer</option>
+			<option value ="TLE">Time Limit Exceeded</option>
+			<option value ="RTE">Run Time Error</option>
+		</select>
+		<select name="LANGUAGE" style="width:100px">
+			<option value ="ALL">Language</option>
+			<option value ="C++">C++</option>
+			<option value ="C">C</option>
+			<option value ="Java">Java</option>
+			<option value ="Python">Python</option>
+		<select>
+		<button type="submit" class="btn">Search</button>
+	</form>
+	<!-- 提交筛选状态 -->
+
+	<table class="table table-hover status">
+		<tr>
+			<th>Run ID</th>
+			<th>User</th>
+			<th>Problem</th>
+			<th>Result</th>
+			<th>Memory</th>
+			<th>Time</th>
+			<th>Language</th>
+			<th>Code Length</th>
+			<th>Submit Time</th>
+		</tr>
+		<tr class="success">
+			<td>1002</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>Accepted</td>
+			<td>1024KB</td>
+			<td>256ms</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:32</td>
+		</tr>
+		<tr class="error">
+			<td>1001</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>Wrong Answer</td>
+			<td>1024KB</td>
+			<td>256ms</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:31</td>
+		</tr>
+		<tr class="warning">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>pending</td>
+			<td>&nbsp</td>
+			<td>&nbsp</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:30</td>
+		</tr>
+		<tr class="warning">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>pending</td>
+			<td>&nbsp</td>
+			<td>&nbsp</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:30</td>
+		</tr>
+		<tr class="warning">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>pending</td>
+			<td>&nbsp</td>
+			<td>&nbsp</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:30</td>
+			</tr>	<tr class="warning">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>pending</td>
+			<td>&nbsp</td>
+			<td>&nbsp</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:30</td>
+			</tr>	<tr class="warning">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>pending</td>
+			<td>&nbsp</td>
+			<td>&nbsp</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:30</td>
+			</tr>	<tr class="warning">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>pending</td>
+			<td>&nbsp</td>
+			<td>&nbsp</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:30</td>
+			</tr>	<tr class="warning">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>pending</td>
+			<td>&nbsp</td>
+			<td>&nbsp</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:30</td>
+			</tr>	<tr class="warning">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>pending</td>
+			<td>&nbsp</td>
+			<td>&nbsp</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:30</td>
+			</tr>	<tr class="warning">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>pending</td>
+			<td>&nbsp</td>
+			<td>&nbsp</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:30</td>
+			</tr>	<tr class="warning">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>pending</td>
+			<td>&nbsp</td>
+			<td>&nbsp</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:30</td>
+			</tr>	
+			<tr class="warning">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>pending</td>
+			<td>&nbsp</td>
+			<td>&nbsp</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:30</td>
+		</tr>		
+		<tr class="success">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>Accepted</td>
+			<td>1024KB</td>
+			<td>256ms</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:27</td>
+		</tr>
+		<tr class="error">
+			<td>1000</td>
+			<td>acfast</td>
+			<td>1000</td>
+			<td>Wrong Answer</td>
+			<td>1024KB</td>
+			<td>256ms</td>
+			<td>Python</td>
+			<td>1234B</td>
+			<td>2013-04-29 11:24:31</td>
+		</tr>
+
+	</table>
+</div>
+$:render.footer()

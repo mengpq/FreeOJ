@@ -1,0 +1,100 @@
+$:render.header()
+$:render.navigation('home')
+
+<div style="margin-left:20px">
+<li><p></p><h2>完成状态</h2><p></p>
+<ul>
+	<li>完成problem、status、register、login界面的设计 --2013.4.29</li>
+</ul>
+</li>
+<li><p></p><h2>OJ功能</h2><p></p>
+<ul>
+	<li>题目列表<ul>
+		<li>在建立OJ的时候缓存所有爬到的题目，以后只需要更新没有在缓存的题目即可</li>
+		<li>添加题目时先在缓存中查询题目是否存在，如果不存在就去网站上爬</li>
+		<li>修改后的题目有题目名称、题目的算法标签、题目来源</li>
+	</ul>
+	</li>
+	<li>比赛 <ul>
+		<li>比赛分为private和public</li>
+		<li>每一场比赛有1-26道题 </li>
+	</ul>
+	</li>
+	<li>用户的比赛  <ul>
+		<li>可以查询每个用户自己建立的比赛</li>
+	</ul>
+	</li>
+	<li>所有比赛 <ul>
+		<li>可以查询所有用户建立的比赛</li>
+	</ul>
+	</li>
+	<li>提交状态<ul>
+		<li>对于每一个用户都有一个OJ的status</li>
+		<li>用户可以看到提交当且仅当满足一下条件<ul>
+			<li>超级用户 </li>
+			<li>源码提交者</li>
+			<li>源码提交的OJ所属者</li>
+		</ul>
+		</li>
+		<li>状态列表 <ul>
+			<li>提交ID，每一个OJ独立，从1开始算</li>
+			<li>提交源码的用户ID</li>
+			<li>提交时间</li>
+			<li>返回状态 <ul>
+				<li>Accepted</li>
+				<li>Wrong Answer</li>
+				<li>Time Limit Exceeded</li>
+				<li>Run Time Error</li>
+				<li>Pending -- submit code and wait for robot to get final status</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</li>
+<li><p>用户 </p>
+<ul>
+	<li>root - 拥有OJ的所有权限</li>
+	<li>注册信息<ul>
+		<li>帐号 <ul>
+			<li>只能包含数字，字母，下划线，@</li>
+		</ul>
+		</li>
+		<li>密码<ul>
+			<li>不能有空格</li>
+			<li>仅在数据库中保存HASH后的字符串</li>
+		</ul>
+		</li>
+		<li>邮件<ul>
+			<li>用来找回密码</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>每个用户都有一个OJ，地址格式为URL/USER_HANDLE，一般用户的权限有<ul>
+		<li>添加题目</li>
+		<li>修改题目的算法TAG</li>
+		<li>下载自己的所有源码</li>
+	</ul>
+	</li>
+	<li>每个用户都有自己的PROBLEM_SOLVE_RECORD，题目名为题目来源OJ加题号</li>
+</ul>
+</li>
+	</ul>
+	<ul>
+		<li><h2>HTML部分</h2><ul>
+			<li>form提交数据<ul>
+				<li>在&lt;form&gt; &lt;/form&gt; 里面用name标记一下输入的东西，以及定义action，然后submit数据就可以提交到指定地址</li>
+			</ul>
+			</li>
+			<li>模态对话框<ul>
+				<li>参看submit那一段代码就可以了</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+	</ul>
+</div>
+$:render.footer()

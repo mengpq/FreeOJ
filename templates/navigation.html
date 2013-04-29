@@ -1,0 +1,39 @@
+$def with(active_status)
+
+<div class="navbar">
+	<div class="navbar-inner">
+		<ul class="nav">
+			$if active_status == 'home':
+				<li class="active"><a href="/">Home</a></li>
+			$else:
+				<li><a href="/">Home</a></li>
+
+			$if active_status == 'problem':
+				<li class="active"><a href="/problem/">problem</a></li>
+			$else:
+				<li><a href="/problem/">problem</a></li>
+
+			$if active_status == 'status':
+				<li class="active"><a href="/status/">status</a></li>
+			$else:
+				<li><a href="/status/">status</a></li>
+
+			<!-- contest
+			$if active_status == 'contest':
+				<li class="active"><a href="/contest/">contest</a></li>
+			$else:
+				<li><a href="/contest/">contest</a></li>
+			-->
+
+			$if active_status == 'register':
+				<li class="active"><a href="/register/">register</a></li>
+			$else:
+				<li><a href="/register/">register</a></li>
+
+			$if active_status == 'login':
+				<li class="active"><a href="/login/">login</a></li>
+			$else:
+				<li><a href="/login/">login</a></li>
+		</ul>
+	</div>
+</div>
