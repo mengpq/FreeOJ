@@ -6,5 +6,10 @@ import web
 
 app = web.application(urls, globals())
 
+def notfound():
+	render = web.template.render("templates")
+	return web.notfound(render.notfound())
+
 if __name__ == "__main__":
-    app.run()
+	app.notfound = notfound
+	app.run()
