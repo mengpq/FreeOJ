@@ -1,5 +1,6 @@
 * <h1>完成状态</h1>
 	* 设计完problem、status、register、login界面 --2013.4.29
+	* 添加自定义404 Not Found
 
 * <h1>OJ功能</h1>
 	* 题目列表

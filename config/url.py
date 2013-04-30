@@ -9,5 +9,6 @@ urls = (
 	'/problem/.*',			prefix + 'main.problem',
 	'/register/.*',			prefix + 'main.register',
 	'/login/.*',			prefix + 'main.login',
+	'/submit/.*',			prefix + 'main.submit',
 )
 

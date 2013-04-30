@@ -1,20 +1,33 @@
+$def with(msg = None, data = {'login_handle':None, 'login_password':None})
 $:render.header()
 $:render.navigation('login')
 
 <div style="display:table; width:auto; margin-top: 120px; margin-left:30%; margin-right:30%">
-	<form class="form-horizontal" action="/login/">
+	$if msg:
+		<center>$msg</center>
+	<form class="form-horizontal" action="/login/" method="POST">
 		<div class="control-group">
 			<label class="control-label" for="inputHandle">Handle</label>
-			<div class="controls">
-				<input type="text" name="login_handle" id="inputHandle" placeholder="Handle">
-			</div>
+			$if msg and data.login_handle:
+				<div class="controls">
+					<input type="text" name="login_handle" id="inputHandle" value="$data.login_handle">
+				</div>
+			$else:
+				<div class="controls">
+					<input type="text" name="login_handle" id="inputHandle" placeholder="Handle">
+				</div>
 		</div>
 
 		<div class="control-group">
 			<label class="control-label" for="inputPassword">Password</label>
-			<div class="controls">
-				<input type="password" name="login_password" id="inputPassword" placeholder="Password">
-			</div>
+			$if msg and data.login_password:
+				<div class="controls">
+					<input type="password" name="login_password" id="inputPassword" value="$data.login_password">
+				</div>
+			$else:
+				<div class="controls">
+					<input type="password" name="login_password" id="inputPassword" placeholder="Password">
+				</div>
 		</div>
 		<div class="control-group">
 			<div class="controls">

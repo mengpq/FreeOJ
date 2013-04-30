@@ -1,34 +1,57 @@
+$def with(msg = None, data = {'reg_handle':None, 'reg_password':None, 'reg_confirm_password':None, 'reg_email':None})
 $:render.header()
 $:render.navigation('register')
 
 <div style="display:table; width:auto; margin-top: 100px; margin-left:30%; margin-right:30%">
-	<form class="form-horizontal" action="/register/">
+	$if msg:
+		<center> $msg </center>
+	<form class="form-horizontal" action="/register/" method="POST">
 		<div class="control-group">
 			<label class="control-label" for="inputHandle">Handle</label>
-			<div class="controls">
-				<input type="text" name="reg_handle" id="inputHandle" placeholder="Handle">
-			</div>
+			$if msg and data.reg_handle:
+				<div class="controls">
+					<input type="text" name="reg_handle" id="inputHandle" value="$data.reg_handle">
+				</div>
+			$else:
+				<div class="controls">
+					<input type="text" name="reg_handle" id="inputHandle" placeholder="Handle">
+				</div>
 		</div>
 
 		<div class="control-group">
 			<label class="control-label" for="inputPassword">Password</label>
-			<div class="controls">
-				<input type="password" name="reg_password" id="inputPassword" placeholder="Password">
-			</div>
+			$if msg and data.reg_password:
+				<div class="controls">
+					<input type="password" name="reg_password" id="inputPassword" value="$data.reg_password">
+				</div>
+			$else:
+				<div class="controls">
+					<input type="password" name="reg_password" id="inputPassword" placeholder="Password">
+				</div>
 		</div>
 
 		<div class="control-group">
 			<label class="control-label" for="Confirm PWD">Confirm PWD</label>
-			<div class="controls">
-				<input type="password" name="reg_confim_password" id="Confirm PWD" placeholder="Confirm PWD">
-			</div>
+			$if msg and data.reg_confirm_password:
+				<div class="controls">
+					<input type="password" name="reg_confirm_password" id="Confirm PWD" value="$data.reg_confirm_password">
+				</div>
+			$else:
+				<div class="controls">
+					<input type="password" name="reg_confirm_password" id="Confirm PWD" placeholder="Confirm PWD">
+				</div>
 		</div>
 
 		<div class="control-group">
 			<label class="control-label" for="Email;">Email</label>
-			<div class="controls">
-				<input type="text" id="Email" placeholder="Email">
-			</div>
+			$if msg and data.reg_email:
+				<div class="controls">
+					<input type="text" name="reg_email" id="Email" value="$data.reg_email">
+				</div>
+			$else:
+				<div class="controls">
+					<input type="text" name="reg_email" id="Email" placeholder="Email">
+				</div>
 		</div>
 
 		<div class="control-group">
