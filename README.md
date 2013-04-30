@@ -1,6 +1,7 @@
 * <h1>完成状态</h1>
 	* 设计完problem、status、register、login界面 --2013.4.29
-	* 添加自定义404 Not Found
+	* 添加自定义404 Not Found --2013.4.30
+	* 添加session,支持register，login，logout --2013.5.1
 
 * <h1>OJ功能</h1>
 	* 题目列表
@@ -53,3 +54,8 @@
 		* 在form> </form>里面用name标记一下输入的东西，以及定义action，然后submit数据就可以提交到指定地址
 	* 模态对话框
 		* 参看submit那一段代码就可以了
+	* session
+		* 用来维持服务器和用户之间的链接状态
+		* 如果30分钟内用户没有动作则session失效
+		* webpy在debug情况下不能正确使用session，所以要在startup时关掉debug
+		* session在新tab中可以维持状态，在新窗口中就是不同的session了

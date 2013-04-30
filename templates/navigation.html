@@ -25,15 +25,19 @@ $def with(active_status)
 				<li><a href="/contest/">contest</a></li>
 			-->
 
-			$if active_status == 'register':
-				<li class="active"><a href="/register/">register</a></li>
-			$else:
-				<li><a href="/register/">register</a></li>
+			$if not session.logined:
+				$if active_status == 'register':
+					<li class="active"><a href="/register/">register</a></li>
+				$else:
+					<li><a href="/register/">register</a></li>
 
-			$if active_status == 'login':
-				<li class="active"><a href="/login/">login</a></li>
+				$if active_status == 'login':
+					<li class="active"><a href="/login/">login</a></li>
+				$else:
+					<li><a href="/login/">login</a></li>
 			$else:
-				<li><a href="/login/">login</a></li>
+				<li style="font-weight:bold"><a href="/">[$session.handle]</a></li>
+				<li><a href="/logout/">logout</a></li>
 		</ul>
 	</div>
 </div>

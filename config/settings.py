@@ -5,8 +5,6 @@ import web
 db = web.database(dbn = 'mysql', db = 'FreeOJ', user = 'root', pw = 'mpqisacfast')
 render = web.template.render('templates/', cache = False)
 
-web.config.debug = True
-
 config = web.storage(
     email = 'mengpq@gmail.com',
 	author = 'AcFast',
@@ -14,6 +12,7 @@ config = web.storage(
     site_desc = '',
     static = '/static',
 )
+
 
 web.template.Template.globals['config'] = config
 web.template.Template.globals['render'] = render

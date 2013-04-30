@@ -4,8 +4,12 @@ import web, re, hashlib
 from config import settings
 from datetime import datetime
 
-render = settings.render
 db = settings.db
+render = settings.render
+
+def user_login(handle):
+	web.ctx.session.handle = handle
+	web.ctx.session.logined = True
 
 class index:
 	def GET(self):
@@ -54,7 +58,6 @@ class register(secure):
 	def GET(self):
 		return render.register()
 
-
 	def POST(self):
 		data = web.input(reg_handle = None, reg_password = None, reg_confirm_password = None, reg_email = None)
 		if secure.empty(self,data.reg_handle):
@@ -72,6 +75,7 @@ class register(secure):
 		else:
 			data.reg_password = hashlib.sha1(data.reg_password).hexdigest()
 			db.insert('user',handle = data.reg_handle, password = data.reg_password, type = 0, reg_date = datetime.now(), email = data.reg_email)
+			user_login(data.reg_handle)
 		raise web.seeother("/")
 
 class login(secure):
@@ -80,6 +84,8 @@ class login(secure):
 		return render.login(msg,data)
 
 	def GET(self):
+		if web.ctx.session.logined:
+			return render.index()
 		return render.login()
 
 	def POST(self):
@@ -88,6 +94,14 @@ class login(secure):
 		msg = secure.check_login(self,data.login_handle, data.login_password)
 		if msg != 'success':
 			return self.error_login_msg(msg,data)
+		user_login(data.login_handle)
+		raise web.seeother("/")
+
+class logout():
+	
+	def GET(self):
+		if web.ctx.session.logined:
+			web.ctx.session.logined = False
 		raise web.seeother("/")
 
 class submit:

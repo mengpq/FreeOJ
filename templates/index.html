@@ -5,6 +5,8 @@ $:render.navigation('home')
 <li><p></p><h2>完成状态</h2><p></p>
 <ul>
 	<li>完成problem、status、register、login界面的设计 --2013.4.29</li>
+	<li>添加自定义404 Not Found --2013.4.30</li>
+	<li>添加session,支持register，login，logout --2013.5.1</li>
 </ul>
 </li>
 <li><p></p><h2>OJ功能</h2><p></p>
@@ -91,6 +93,13 @@ $:render.navigation('home')
 			</li>
 			<li>模态对话框<ul>
 				<li>参看submit那一段代码就可以了</li>
+			</ul>
+			</li>
+			<li>session<ul>
+				<li>用来维持服务器和用户之间的链接状态</li>
+				<li>如果30分钟内用户没有动作则session失效</li>
+				<li>webpy在debug情况下不能正确使用session，所以要在startup时关掉debug</li>
+				<li>session在新tab中可以维持状态，在新窗口中就是不同的session了</li>
 			</ul>
 			</li>
 		</ul>
