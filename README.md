@@ -1,7 +1,7 @@
 * <h1>完成状态</h1>
 	* 设计完problem、status、register、login界面 --2013.4.29
 	* 添加自定义404 Not Found --2013.4.30
-	* 添加session,支持register，login，logout --2013.5.1
+	* 添加session,支持register，login，logout，profile，problemset，修改了url --2013.5.1
 
 * <h1>OJ功能</h1>
 	* 题目列表

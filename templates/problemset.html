@@ -1,0 +1,40 @@
+$:render.header()
+$:render.navigation('problem')
+
+<div>
+	<h1><center>Problem List</center></h1>
+	<!-- 提交筛选状态 -->
+	<form class="form-inline" action="/problemset" style="margin-bottom:5px">
+		<input type="text" name="problem_title" class="input-small" placeholder="title">
+		<input type="text" name="tag" class="input-small" placeholder="tag">
+		<select name="source" style="width:100px">
+			<option value ="ALL">source</option>
+			<option value ="CF">CodeForces</option>
+			<option value ="ZOJ">ZOJ</option>
+			<option value ="HDU">HDU</option>
+			<option value ="POJ">POJ</option>
+		</select>
+		<button type="submit" class="btn">Search</button>
+	</form>
+	<!-- 提交筛选状态 -->
+
+	<table class="table table-hover status">
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>Tag</th>
+			<th>Source</th>
+			<th>AC/Submit</th>
+		</tr>
+		<tr class="success">
+			<td>1000</td>
+			<td><a href="/problem/1000">Blackjack</a></td>
+			<td>dp</td>
+			<td>CF</td>
+			<td>0/1</td>
+		</tr>
+	</table>
+</div>
+
+
+$:render.footer()

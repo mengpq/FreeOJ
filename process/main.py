@@ -16,11 +16,23 @@ class index:
 		return render.index()
 
 class status:
+
 	def GET(self):
+		if not web.ctx.session.logined:
+			raise web.seeother("/login")
 		return render.status(1)
 
-class problem:
+class problemset:
+
 	def GET(self):
+		if not web.ctx.session.logined:
+			raise web.seeother("/login")
+		return render.problemset()
+
+class problem:
+	def GET(self,problemid):
+		if not web.ctx.session.logined:
+			raise web.seeother("/login")
 		return render.problem()
 
 class secure:
@@ -100,8 +112,30 @@ class login(secure):
 class logout():
 	
 	def GET(self):
-		if web.ctx.session.logined:
-			web.ctx.session.logined = False
+		web.ctx.session.kill()
+		raise web.seeother("/")
+
+class profile():
+
+	def GET(self):
+		if not web.ctx.session.logined:
+			raise web.seeother("/login")
+		return render.profile()
+
+	def POST(self):
+		if not web.ctx.session.logined:
+			raise web.seeother("/login")
+		data = web.input(handle = None, password = None, confirm_password = None, email = None)
+		if data.handle != web.ctx.session.handle:
+			raise web.seeother("/login")
+		if data.password:
+			if data.password != data.confirm_password:
+				return render.profile("two password is different")
+			if len(data.password) < 6:
+				return render.profile(" the len of the password must be not less than 6")
+			db.update('user',where = "handle='" + data.handle + "'",password = hashlib.sha1(data.password).hexdigest())
+		if data.email:
+			db.update('user',where = "handle='" + data.handle + "'", email = data.email)
 		raise web.seeother("/")
 
 class submit:

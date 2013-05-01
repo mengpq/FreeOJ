@@ -5,7 +5,7 @@ $:render.navigation('login')
 <div style="display:table; width:auto; margin-top: 120px; margin-left:30%; margin-right:30%">
 	$if msg:
 		<center>$msg</center>
-	<form class="form-horizontal" action="/login/" method="POST">
+	<form class="form-horizontal" action="/login" method="POST">
 		<div class="control-group">
 			<label class="control-label" for="inputHandle">Handle</label>
 			$if msg and data.login_handle:

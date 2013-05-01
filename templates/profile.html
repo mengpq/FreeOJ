@@ -1,0 +1,48 @@
+$def with(msg = None)
+$:render.header()
+$:render.navigation('profile')
+
+<div style="display:table; width:auto; margin-top: 100px; margin-left:30%; margin-right:30%">
+	$if msg:
+		<center>$msg<center>
+	<form class="form-horizontal" action="/profile" method="POST">
+		<div class="control-group">
+			<label class="control-label" for="inputHandle">Handle</label>
+			<div class="controls">
+				<input type="text" readonly="readonly" name="handle" id="inputHandle" value="$session.handle">
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="inputNewPassword">New Password</label>
+			<div class="controls">
+				<input type="password" name="password" id="inputNewPassword" placeholder="leave it blank if not to modify">
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="comfirm password">Confirm New Password</label>
+			<div class="controls">
+				<input type="password" name="confirm_password" id="comfirm password" placeholder="confirm new password">
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="inputEmail">Email</label>
+			<div class="controls">
+				<input type="text" name="email" id="inputEmail" placeholder="leave it blank if not to modify">
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="controls">
+				<button type="submit" class="btn">Submit</button>
+			</div>
+		</div>
+
+	</form>
+</div>
+
+
+
+$:render.footer()

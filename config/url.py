@@ -4,12 +4,14 @@
 prefix = 'process.'
 
 urls = (
-    '/',                    prefix + 'main.index',
-	'/status/.*',			prefix + 'main.status',
-	'/problem/.*',			prefix + 'main.problem',
-	'/register/.*',			prefix + 'main.register',
-	'/login/.*',			prefix + 'main.login',
-	'/logout/.*',			prefix + 'main.logout',
-	'/submit/.*',			prefix + 'main.submit',
+    '/',                	prefix + 'main.index',
+	'/status',				prefix + 'main.status',
+	'/problem',				prefix + 'main.problemset',
+	'/problem/(\d+)',		prefix + 'main.problem',
+	'/register',			prefix + 'main.register',
+	'/login',				prefix + 'main.login',
+	'/logout',				prefix + 'main.logout',
+	'/profile',				prefix + 'main.profile',
+	'/submit',				prefix + 'main.submit',
 )
 

@@ -5,7 +5,7 @@ $:render.navigation('register')
 <div style="display:table; width:auto; margin-top: 100px; margin-left:30%; margin-right:30%">
 	$if msg:
 		<center> $msg </center>
-	<form class="form-horizontal" action="/register/" method="POST">
+	<form class="form-horizontal" action="/register" method="POST">
 		<div class="control-group">
 			<label class="control-label" for="inputHandle">Handle</label>
 			$if msg and data.reg_handle:

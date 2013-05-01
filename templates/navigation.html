@@ -9,14 +9,14 @@ $def with(active_status)
 				<li><a href="/">Home</a></li>
 
 			$if active_status == 'problem':
-				<li class="active"><a href="/problem/">problem</a></li>
+				<li class="active"><a href="/problem">Problem</a></li>
 			$else:
-				<li><a href="/problem/">problem</a></li>
+				<li><a href="/problem">Problem</a></li>
 
 			$if active_status == 'status':
-				<li class="active"><a href="/status/">status</a></li>
+				<li class="active"><a href="/status">Status</a></li>
 			$else:
-				<li><a href="/status/">status</a></li>
+				<li><a href="/status">Status</a></li>
 
 			<!-- contest
 			$if active_status == 'contest':
@@ -27,17 +27,20 @@ $def with(active_status)
 
 			$if not session.logined:
 				$if active_status == 'register':
-					<li class="active"><a href="/register/">register</a></li>
+					<li class="active"><a href="/register">Register</a></li>
 				$else:
-					<li><a href="/register/">register</a></li>
+					<li><a href="/register">Register</a></li>
 
 				$if active_status == 'login':
-					<li class="active"><a href="/login/">login</a></li>
+					<li class="active"><a href="/login">Login</a></li>
 				$else:
-					<li><a href="/login/">login</a></li>
+					<li><a href="/login">Login</a></li>
 			$else:
-				<li style="font-weight:bold"><a href="/">[$session.handle]</a></li>
-				<li><a href="/logout/">logout</a></li>
+				$if active_status == 'profile':
+					<li class="active" style="font-weight:bold"><a href="/profile">[$session.handle]</a></li>
+				$else:
+					<li style="font-weight:bold"><a href="/profile">[$session.handle]</a></li>
+				<li><a href="/logout">Logout</a></li>
 		</ul>
 	</div>
 </div>

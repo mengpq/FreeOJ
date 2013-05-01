@@ -6,7 +6,7 @@ import web
 
 web.config.debug = False
 app = web.application(urls, globals())
-web.config.session_parameters['timeout'] = 10
+web.config.session_parameters['timeout'] = 30 * 60 
 session = web.session.Session(app, web.session.DiskStore('sessions'),initializer={'handle':"",'logined':False})
 web.template.Template.globals['session'] = session 
 
