@@ -1,0 +1,36 @@
+.cf-description{
+	font-weight: bold;
+	font-size: large;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.cf-problem-title{
+	font-size: x-large; 
+	text-align: center;
+}
+
+.cf-input-specification{
+	padding: 10px;
+}
+
+.cf-output-specification{
+	padding: 10px;
+}
+
+.cf-sample-tests{
+	padding: 10px;
+}
+
+.cf-input{
+}
+
+.cf-output{
+	margin-bottom:30px;
+}
+
+.cf-section-title{
+	font-weight: bold;
+	font-size: large;
+}

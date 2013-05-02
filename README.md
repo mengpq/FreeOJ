@@ -2,6 +2,8 @@
 	* 设计完problem、status、register、login界面 --2013.4.29
 	* 添加自定义404 Not Found --2013.4.30
 	* 添加session,支持register，login，logout，profile，problemset，修改了url --2013.5.1
+	* 添加了problemset和problem的操作，主要是获取题目ID，然后在/static/中读取problem。--2013.5.2
+	* 题目的html存不存储到数据库里面，因为现在不知道怎么解决编码问题。一些超过了128的字符集在数据库中存储就变成乱码了. --2013.5.2
 
 * <h1>OJ功能</h1>
 	* 题目列表

@@ -1,0 +1,89 @@
+$:render.header()
+$:render.navigation('problem')
+
+$ problem_name = "A. Blackjack"
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+<!-- 提交源代码 -->
+<form action="/submit">
+	<div id="submit_code" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<div style="font-size:20px;text-align:center">$problem_name</div>
+			<div style="font-size:14px">
+				Language: <select name="language" style="font-size:12px; margin-top:8px; height:25px; width:100px;">
+					<option value ="C++">C++</option>
+					<option value ="C">C</option>
+					<option value="Python">Python</option>
+					<option value="Java">Java</option>
+				</select>
+			</div>
+		</div>
+		<div class="source">
+			<textarea name="source_code" style="font-size: 14px; width:97%; height:400px; background-color: #DCEAF4; font-family: Courier New, Courier, monospace;"></textarea>
+		</div>
+		<div class="modal-footer" style="text-align:center;">
+			<button type="submit" class="btn">Submit</button>
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Cancle</button>
+		</div>
+	</div>
+</form>
+<!-- 提交源代码 -->
+
+<div class="problem_title">A. Blackjack</div> <br />
+<div style="font-size:medium; text-align:center"><strong>Time Limit:</strong>1000ms &nbsp&nbsp&nbsp<strong>Memory Limit:</strong>256MB &nbsp&nbsp&nbsp<strong>64bit IO Format:</strong> %I64d </div>
+<div style="text-align:center; margin-top:10px">
+	<a href="#submit_code" role="button" class="btn" data-toggle="modal">Submit</a>
+	<a href="/status" class="btn">Status</a>
+</div>
+
+<br />
+<div class="container problem">
+	<p class="description">Description</p>
+	<p class="problem_text">One rainy gloomy evening when all modules hid in the nearby cafes to drink hot energetic cocktails, the Hexadecimal virus decided to fly over the Mainframe to look for a Great Idea. And she has found one!</p>
+	<p class="problem_text"> Many people will surely be willing to visit this splendid shrine of high culture. </p>
+	<p class="problem_text">In Mainframe a standard pack of 52 cards is used to play blackjack. The pack contains cards of 13 values: 2, 3, 4, 5, 6, 7, 8, 9, 10, jacks, queens, kings and aces. Each value also exists in one of four suits: hearts, diamonds, clubs and spades. Also, each card earns some value in points assigned to it: cards with value from two to ten earn from 2 to 10 points, correspondingly. An ace can either earn 1 or 11, whatever the player wishes. The picture cards (king, queen and jack) earn 10 points. The number of points a card earns does not depend on the suit. The rules of the game are very simple. The player gets two cards, if the sum of points of those cards equals n, then the player wins, otherwise the player loses.</p>
+	<p class="problem_text">The player has already got the first card, it's the queen of spades. To evaluate chances for victory, you should determine how many ways there are to get the second card so that the sum of points exactly equals n.</p>
+
+	<div class="input">
+		<strong>Input</strong>
+	</div>
+	<p class="problem_text">The only line contains n (1 ≤ n ≤ 25) — the required sum of points.</p>
+
+	<div class="input">
+		<strong>Output</strong>
+	</div>
+	<p class="problem_text">Print the numbers of ways to get the second card in the required way if the first card is the queen of spades. </p>
+	<br />
+	<div class="sampletest">
+		<strong>Sample test</strong>
+	</div>
+
+	<div class="testcase">
+		<table class="testcase_data">
+			<tr>
+				<td>Input</td>
+				<td>Output</td>
+			</tr>
+			<tr>
+				<td>
+					<div>
+						4 <br />
+						20 <br />
+						10 <br />
+					</div>
+				</td>
+				<td>
+					<div>
+						12 <br />
+						15 <br />
+						10 <br />
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+$:render.footer()

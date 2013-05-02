@@ -27,13 +27,19 @@ class problemset:
 	def GET(self):
 		if not web.ctx.session.logined:
 			raise web.seeother("/login")
-		return render.problemset()
+		result = db.select('problem')
+		return render.problemset(result)
 
 class problem:
 	def GET(self,problemid):
 		if not web.ctx.session.logined:
-			raise web.seeother("/login")
-		return render.problem()
+			raise web.seeother('/login')
+		q = db.select('problem',where = 'pid = ' + str(problemid))
+		if not q:
+			raise web.seeother('/problem')
+		result = q[0]
+		f = open('./static/codeforces/' + result.sourceid + '.html')
+		return render.problem(result.title,f.read())
 
 class secure:
 	def empty(self, string):

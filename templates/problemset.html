@@ -1,3 +1,4 @@
+$def with(problemlist = None)
 $:render.header()
 $:render.navigation('problem')
 
@@ -26,13 +27,14 @@ $:render.navigation('problem')
 			<th>Source</th>
 			<th>AC/Submit</th>
 		</tr>
-		<tr class="success">
-			<td>1000</td>
-			<td><a href="/problem/1000">Blackjack</a></td>
-			<td>dp</td>
-			<td>CF</td>
-			<td>0/1</td>
-		</tr>
+		$for item in problemlist:
+			<tr class="success">
+				<td>$item.pid</td>
+				<td><a href="/problem/$item.pid">$item.title</a></td>
+				<td>$item.tag</td>
+				<td>$item.source</td>
+				<td>0/0</td>
+			</tr>
 	</table>
 </div>
 
