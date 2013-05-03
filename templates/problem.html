@@ -1,4 +1,4 @@
-$def with(problem_title,problem_html)
+$def with(problem, problem_html)
 $:render.header()
 $:render.navigation('problem')
 
@@ -6,11 +6,14 @@ $:render.navigation('problem')
 <script src="/static/js/bootstrap.min.js"></script>
 
 <!-- 提交源代码 -->
-<form action="/submit">
+<form action="/submit" method="POST">
+	<input type="hidden" name="orginal_oj" value="$problem.source" />
+	<input type="hidden" name="source_id" value="$problem.sourceid" />
+	<input type="hidden" name="problem_id" value="$problem.pid" />
 	<div id="submit_code" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<div style="font-size:20px;text-align:center">$problem_title</div>
+			<div style="font-size:20px;text-align:center">$problem.title</div>
 			<div style="font-size:14px">
 				Language: <select name="language" style="font-size:12px; margin-top:8px; height:25px; width:100px;">
 					<option value ="C++">C++</option>

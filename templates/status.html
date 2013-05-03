@@ -1,4 +1,4 @@
-$def with(status_flag)
+$def with(status_list)
 $:render.header()
 $:render.navigation('status')
 <div>
@@ -37,165 +37,23 @@ $:render.navigation('status')
 			<th>Code Length</th>
 			<th>Submit Time</th>
 		</tr>
-		<tr class="success">
-			<td>1002</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>Accepted</td>
-			<td>1024KB</td>
-			<td>256ms</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:32</td>
-		</tr>
-		<tr class="error">
-			<td>1001</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>Wrong Answer</td>
-			<td>1024KB</td>
-			<td>256ms</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:31</td>
-		</tr>
-		<tr class="warning">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>pending</td>
-			<td>&nbsp</td>
-			<td>&nbsp</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:30</td>
-		</tr>
-		<tr class="warning">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>pending</td>
-			<td>&nbsp</td>
-			<td>&nbsp</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:30</td>
-		</tr>
-		<tr class="warning">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>pending</td>
-			<td>&nbsp</td>
-			<td>&nbsp</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:30</td>
-			</tr>	<tr class="warning">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>pending</td>
-			<td>&nbsp</td>
-			<td>&nbsp</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:30</td>
-			</tr>	<tr class="warning">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>pending</td>
-			<td>&nbsp</td>
-			<td>&nbsp</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:30</td>
-			</tr>	<tr class="warning">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>pending</td>
-			<td>&nbsp</td>
-			<td>&nbsp</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:30</td>
-			</tr>	<tr class="warning">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>pending</td>
-			<td>&nbsp</td>
-			<td>&nbsp</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:30</td>
-			</tr>	<tr class="warning">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>pending</td>
-			<td>&nbsp</td>
-			<td>&nbsp</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:30</td>
-			</tr>	<tr class="warning">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>pending</td>
-			<td>&nbsp</td>
-			<td>&nbsp</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:30</td>
-			</tr>	<tr class="warning">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>pending</td>
-			<td>&nbsp</td>
-			<td>&nbsp</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:30</td>
-			</tr>	
-			<tr class="warning">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>pending</td>
-			<td>&nbsp</td>
-			<td>&nbsp</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:30</td>
-		</tr>		
-		<tr class="success">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>Accepted</td>
-			<td>1024KB</td>
-			<td>256ms</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:27</td>
-		</tr>
-		<tr class="error">
-			<td>1000</td>
-			<td>acfast</td>
-			<td>1000</td>
-			<td>Wrong Answer</td>
-			<td>1024KB</td>
-			<td>256ms</td>
-			<td>Python</td>
-			<td>1234B</td>
-			<td>2013-04-29 11:24:31</td>
-		</tr>
-
+		$for item in status_list:
+			$ result = 'pending'
+			$if item.result == 'accepted':
+				$ result = 'success'
+			$elif item.result != 'pending':
+				$ result = 'error'
+			<tr class="$result">
+				<td>$item.runid</td>
+				<td>$item.handle</td>
+				<td><a href="/problem/$item.problemid">$item.problemid</a></td>
+				<td>$item.result</td>
+				<td>$item.memory KB</td>
+				<td>$item.runtime ms</td>
+				<td>$item.language</td>
+				<td>$item.codelen B</td>
+				<td>$item.submittime</td>
+			</tr>
 	</table>
 </div>
 $:render.footer()

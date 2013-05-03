@@ -20,6 +20,38 @@ class dbinit():
 		print ("create table if not exists user %s" % user_table)
 		self.cursor.execute("create table if not exists user %s" % user_table)
 
+	def create_problem_table(self):
+		problem_table = """(
+		pid int NOT NULL AUTO_INCREMENT,
+		title varchar(80),
+		tag varchar(1024),
+		source varchar(128) NOT NULL,
+		sourceid varchar(64) NOT NULL,
+		PRIMARY KEY (pid)
+		) AUTO_INCREMENT = 1000
+		"""
+		self.cursor = self.conn.cursor()
+		print ("create table if not exists problem %s" % problem_table)
+		self.cursor.execute("create table if not exists problem %s" % problem_table)
+	
+	def create_status_table(self):
+		status_table ="""(
+		runid INT NOT NULL AUTO_INCREMENT,
+		handle VARCHAR(255) NOT NULL,
+		problemid INT NOT NULL,
+		result varchar(64),
+		memory INT,
+		runtime INT,
+		language VARCHAR(64) NOT NULL,
+		codelen INT,
+		submittime VARCHAR(32),
+		sourcecode TEXT,
+		PRIMARY KEY (runid)
+		) AUTO_INCREMENT = 1
+		"""
+		self.cursor = self.conn.cursor()
+		print ("create table if not exists status %s" % status_table)
+		self.cursor.execute("create table if not exists status %s" % status_table)
 
 host = 'localhost'
 user = 'root'
@@ -27,4 +59,4 @@ passwd = 'mpqisacfast'
 dbname = 'FreeOJ'
 
 db = dbinit(host,user,passwd,dbname)
-db.create_user_table()
+db.create_status_table()

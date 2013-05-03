@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
-import web, re, hashlib
+import web, re, hashlib, thread
+import submitor
 from config import settings
 from datetime import datetime
 
@@ -11,6 +12,16 @@ def user_login(handle):
 	web.ctx.session.handle = handle
 	web.ctx.session.logined = True
 
+def submitcode_thread(data, handle, nowtime):
+	if data.orginal_oj == "codeforces":
+		robot = submitor.codeforces()
+		robot.submit(data.language, data.source_id, data.source_code)
+
+def submitcode(data):
+		nowtime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+		db.insert('status',handle = web.ctx.session.handle, problemid = data.problem_id, result = 'pending', memory = 0, runtime = 0, language = data.language, codelen = len(data.source_code), submittime = nowtime, sourcecode = data.source_code)
+		thread.start_new_thread(submitcode_thread,(data,web.ctx.session.handle,nowtime))
+
 class index:
 	def GET(self):
 		return render.index()
@@ -20,7 +31,8 @@ class status:
 	def GET(self):
 		if not web.ctx.session.logined:
 			raise web.seeother("/login")
-		return render.status(1)
+		result = db.select('status', order = 'runid desc')
+		return render.status(result)
 
 class problemset:
 
@@ -39,7 +51,7 @@ class problem:
 			raise web.seeother('/problem')
 		result = q[0]
 		f = open('./static/codeforces/' + result.sourceid + '.html')
-		return render.problem(result.title,f.read())
+		return render.problem(result,f.read())
 
 class secure:
 	def empty(self, string):
@@ -147,3 +159,10 @@ class profile():
 class submit:
 	def GET(self):
 		return render.submit('hello world')
+
+	def POST(self):
+		if not web.ctx.session.logined:
+			raise web.othersee("/login")
+		data = web.input(orginal_oj = None, problem_id = None, source_id = None, source_code = None, language = None)
+		submitcode(data)
+		raise web.seeother("/status")
