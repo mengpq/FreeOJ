@@ -40,12 +40,14 @@ class dbinit():
 		handle VARCHAR(255) NOT NULL,
 		problemid INT NOT NULL,
 		result varchar(64),
+		ispending int,
 		memory INT,
 		runtime INT,
 		language VARCHAR(64) NOT NULL,
 		codelen INT,
 		submittime VARCHAR(32),
 		sourcecode TEXT,
+		status_hash varchar(128),
 		PRIMARY KEY (runid)
 		) AUTO_INCREMENT = 1
 		"""

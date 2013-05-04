@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-import web, re, hashlib, thread
+import web, re, hashlib, thread, time
 import submitor
 from config import settings
 from datetime import datetime
@@ -12,15 +12,26 @@ def user_login(handle):
 	web.ctx.session.handle = handle
 	web.ctx.session.logined = True
 
-def submitcode_thread(data, handle, nowtime):
+def submitcode_thread(data, handle, status_hash):
 	if data.orginal_oj == "codeforces":
 		robot = submitor.codeforces()
 		robot.submit(data.language, data.source_id, data.source_code)
+		total = 0
+		while total < 120:
+			time.sleep(1)
+			res = robot.get_result()
+			if res['source_id'] != data.source_id: continue
+			db.update('status', where = "status_hash = '" + str(status_hash) + "'", result = res['result'], memory = res['memory'], runtime = res['runtime'])
+			if not re.search('ing',res['result']): 
+				db.update('status', where = "status_hash ='" + str(status_hash) + "'", ispending = 0)
+				break
+			total += 1
 
 def submitcode(data):
-		nowtime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		db.insert('status',handle = web.ctx.session.handle, problemid = data.problem_id, result = 'pending', memory = 0, runtime = 0, language = data.language, codelen = len(data.source_code), submittime = nowtime, sourcecode = data.source_code)
-		thread.start_new_thread(submitcode_thread,(data,web.ctx.session.handle,nowtime))
+	nowtime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+	status_hash = hashlib.sha1(str(datetime.now()) + str(web.ctx.session.handle) + str(data.problem_id)).hexdigest()
+	db.insert('status',handle = web.ctx.session.handle, problemid = data.problem_id, result = 'pending', ispending=1, memory = 0, runtime = 0, language = data.language, codelen = len(data.source_code), submittime = nowtime, sourcecode = data.source_code, status_hash = status_hash)
+	thread.start_new_thread(submitcode_thread,(data,web.ctx.session.handle,status_hash))
 
 class index:
 	def GET(self):

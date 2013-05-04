@@ -39,9 +39,9 @@ $:render.navigation('status')
 		</tr>
 		$for item in status_list:
 			$ result = 'pending'
-			$if item.result == 'accepted':
+			$if item.result == 'Accepted':
 				$ result = 'success'
-			$elif item.result != 'pending':
+			$elif item.ispending != 1:
 				$ result = 'error'
 			<tr class="$result">
 				<td>$item.runid</td>
