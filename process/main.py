@@ -8,19 +8,26 @@ from datetime import datetime
 db = settings.db
 render = settings.render
 
+cf_competition = 0
+
 def user_login(handle):
 	web.ctx.session.handle = handle
 	web.ctx.session.logined = True
 
-def submitcode_thread(data, handle, status_hash):
+def submitcode_thread(data, handle, status_hash, nowtime):
 	if data.orginal_oj == "codeforces":
 		robot = submitor.codeforces()
-		robot.submit(data.language, data.source_id, data.source_code)
+		robot.submit(data.language, data.source_id, data.source_code + "/* " + status_hash + "*/")
 		total = 0
-		while total < 120:
+		submission_id = None
+		while total < 30:
 			time.sleep(1)
-			res = robot.get_result()
+			res = robot.get_result(submission_id)
 			if res['source_id'] != data.source_id: continue
+			submission_id = res['submission_id']
+			old_result = db.select('status', where = "status_hash = '" + str(status_hash) + "'")[0]
+			if old_result.result != res['result']: total = 0
+			print nowtime
 			db.update('status', where = "status_hash = '" + str(status_hash) + "'", result = res['result'], memory = res['memory'], runtime = res['runtime'])
 			if not re.search('ing',res['result']): 
 				db.update('status', where = "status_hash ='" + str(status_hash) + "'", ispending = 0)
@@ -31,7 +38,7 @@ def submitcode(data):
 	nowtime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 	status_hash = hashlib.sha1(str(datetime.now()) + str(web.ctx.session.handle) + str(data.problem_id)).hexdigest()
 	db.insert('status',handle = web.ctx.session.handle, problemid = data.problem_id, result = 'pending', ispending=1, memory = 0, runtime = 0, language = data.language, codelen = len(data.source_code), submittime = nowtime, sourcecode = data.source_code, status_hash = status_hash)
-	thread.start_new_thread(submitcode_thread,(data,web.ctx.session.handle,status_hash))
+	thread.start_new_thread(submitcode_thread,(data,web.ctx.session.handle,status_hash,nowtime))
 
 class index:
 	def GET(self):
@@ -50,18 +57,18 @@ class problemset:
 	def GET(self):
 		if not web.ctx.session.logined:
 			raise web.seeother("/login")
-		result = db.select('problem')
+		result = db.select('problem', where = 'hidden = 0')
 		return render.problemset(result)
 
 class problem:
 	def GET(self,problemid):
 		if not web.ctx.session.logined:
 			raise web.seeother('/login')
-		q = db.select('problem',where = 'pid = ' + str(problemid))
+		q = db.select('problem',where = 'pid = ' + str(problemid) + ' and hidden = 0')
 		if not q:
 			raise web.seeother('/problem')
 		result = q[0]
-		f = open('./static/codeforces/' + result.sourceid + '.html')
+		f = open('./static/' + result.source + '/' + result.sourceid + '.html')
 		return render.problem(result,f.read())
 
 class secure:

@@ -1,4 +1,4 @@
-.cf-description{
+.hdu-description{
 	font-weight: bold;
 	font-size: large;
 	margin-top: 10px;
@@ -6,35 +6,35 @@
 	margin-right: 10px;
 }
 
-.cf-problem-title{
+.hdu-problem-title{
 	font-size: x-large; 
 	text-align: center;
 }
 
-.cf-problem-body{
+.hdu-problem-body{
 	padding: 10px;
 }
 
-.cf-input-specification{
+.hdu-input-specification{
 	padding: 10px;
 }
 
-.cf-output-specification{
+.hdu-output-specification{
 	padding: 10px;
 }
 
-.cf-sample-tests{
+.hdu-sample-tests{
 	padding: 10px;
 }
 
-.cf-input{
+.hdu-input{
 }
 
-.cf-output{
+.hdu-output{
 	margin-bottom:30px;
 }
 
-.cf-section-title{
+.hdu-section-title{
 	font-weight: bold;
 	font-size: large;
 }
