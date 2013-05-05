@@ -60,8 +60,12 @@
 		* 在form> </form>里面用name标记一下输入的东西，以及定义action，然后submit数据就可以提交到指定地址
 	* 模态对话框
 		* 参看submit那一段代码就可以了
+<<<<<<< HEAD
 	* session
 		* 用来维持服务器和用户之间的链接状态
 		* 如果30分钟内用户没有动作则session失效
 		* webpy在debug情况下不能正确使用session，所以要在startup时关掉debug
 		* session在新tab中可以维持状态，在新窗口中就是不同的session了
+=======
+	*
+>>>>>>> 2fb779b34fa78e12ddcfe22218a5accaa4da718f
