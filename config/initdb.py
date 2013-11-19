@@ -57,7 +57,7 @@ class dbinit():
 
 host = 'localhost'
 user = 'root'
-passwd = 'mpqisacfast'
+passwd = ''
 dbname = 'FreeOJ'
 
 db = dbinit(host,user,passwd,dbname)
